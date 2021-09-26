@@ -1,9 +1,13 @@
-const { message } = require('./hello');
+const { hello } = require('./hello');
 
 class NginxJS {
-  index(res) {
-    res.headersOut['Content-Type'] = "application/json";
-    res.return(200, JSON.stringify({ message }));
+  index(event) {
+    this.setHeaders(event);
+    event.return(200, JSON.stringify({ message: hello.say(), event: JSON.stringify(event) }));
+  }
+
+  setHeaders(event) {
+    event.headersOut['Content-Type'] = "application/json";
   }
 }
 
