@@ -1,4 +1,16 @@
 const dayjs = require('dayjs');
+
+class Hello {
+  say() {
+    return `hello world - ${this.dateTime()}`;
+  }
+
+  dateTime() {
+    return dayjs().format('YYYY-MM-DD HH:mm:ss');
+  }
+}
+
 module.exports = {
-  message: `hello world ${dayjs().toISOString()}`,
+  Hello,
+  hello: new Hello(),
 };
