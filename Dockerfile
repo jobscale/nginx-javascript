@@ -11,6 +11,6 @@ FROM ghcr.io/jobscale/nginx-net
 WORKDIR /etc/nginx
 COPY nginx.conf .
 COPY default.conf conf.d
-COPY --from=builder dist dist
+COPY --from=builder /home/node/dist dist
 COPY docs /usr/share/nginx/html
 RUN chown -R nginx. /usr/share/nginx/html
