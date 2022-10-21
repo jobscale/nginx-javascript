@@ -1,16 +1,15 @@
-FROM node:bullseye as builder
+FROM node:lts-bullseye as builder
 WORKDIR /home/node
-COPY . .
-RUN chown -R node. .
 USER node
-RUN rm -fr node_modules package-lock.json yarn.lock
+COPY --chown=node:staff package.json .
 RUN npm i
+COPY --chown=node:staff webpack.config.js .
+COPY --chown=node:staff src src
 RUN npm run build
 
-FROM ghcr.io/jobscale/nginx-net
+FROM nginx:1.19
 WORKDIR /etc/nginx
 COPY nginx.conf .
 COPY default.conf conf.d
-COPY --from=builder /home/node/dist dist
-COPY docs /usr/share/nginx/html
-RUN chown -R nginx. /usr/share/nginx/html
+COPY --from=builder --chown=nginx:staff /home/node/dist dist
+COPY --chown=nginx:staff docs /usr/share/nginx/html

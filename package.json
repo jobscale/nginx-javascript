@@ -8,13 +8,13 @@
     "test": "njs dist/bundle.js"
   },
   "dependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "babel-loader": "^8.2.3",
-    "dayjs": "^1.10.7",
-    "webpack": "^5.64.4",
-    "webpack-cli": "^4.9.1"
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
+    "babel-loader": "^8.2.5",
+    "dayjs": "^1.11.6",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   },
   "keywords": [],
   "author": "jobscale <jobscale@jsx.jp>",

@@ -23,6 +23,7 @@ class NginxJS {
 
   setHeaders(njs) {
     njs.headersOut['Content-Type'] = "application/json";
+    njs.headersOut['X-Message'] = hello.say();
   }
 }
 

@@ -6,7 +6,7 @@ class Hello {
   }
 
   dateTime() {
-    return dayjs().format('YYYY-MM-DD HH:mm:ss');
+    return `${dayjs().format('YYYY-MM-DD HH:mm:ss')} ${process.env.TZ || 'GMT'}`;
   }
 }
 
