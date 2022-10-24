@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -eu
+
+{
+  docker build . -t nginx-js:local \
+  && docker run --rm --name nginx-js --network vnet \
+  -p 3000:80 -it nginx-js:local
+}
