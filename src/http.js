@@ -8,7 +8,20 @@ async function headers(r) {
 function index(r) {
   headers(r)
   .then(() => {
-    r.return(200, 'hello NginxJS World');
+    r.return(200, `<style>
+:root {
+  color-scheme: dark light;
+}
+body {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+<main>
+  <h1>hello NginxJS World</h1>
+</main>
+`);
   })
   .catch(e => {
     r.log(e.toString());
@@ -33,7 +46,7 @@ function hello(r) {
 function fetch(r) {
   headers(r)
   .then(() => Promise.all([
-    ngx.fetch('http://52.204.78.9').then(reply => reply.text()),
+    ngx.fetch('stg-front.jsx.jp/ip').then(reply => reply.text()),
   ]))
   .then(body => {
     r.return(200, body);
